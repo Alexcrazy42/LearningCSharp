@@ -1,85 +1,44 @@
 ﻿
-class Program
-{
-    static void Main(string[] args)
+Person sender = new Person("Александр");
+Person receiver = new Person("Наталья");
+Message message = new Message("Привет, как дела?");
+Messenger<Message, Person> messenger = new Messenger<Message, Person>();
+messenger.SendMessage(sender, receiver, message);
+
+
+class Messenger<M, P>
+    where M : Message 
+    where P : Person
+{ 
+    public void SendMessage(P sender, P receiver, M message)
     {
-        Student student = new Student("Имя", 19);
-        student.Klass = 11;
-        Person person = student;
-        Console.Write(person.Name);
+        Console.WriteLine($"{sender.Name} to {receiver.Name}: {message.Text}");
     }
+}
+
+
+
+
+class Message
+{
+    private string text;
+    public string Text
+    {
+        get { return text; }
+        set { text = value; }
+    }
+
+    public Message(string text ) => this.text = text;
 }
 
 class Person
 {
     private string name;
-    public int age;
-
     public string Name
     {
         get { return name; }
-        set
-        {
-            if (value != null)
-            {
-                name = value;
-            }
-            else
-            {
-                throw new Exception();
-            }
-        }
+        set { name = value; }
     }
 
-    public int Age
-    {
-        get { return age; }
-        set
-        {
-            if (value > 0)
-            {
-                age = value;
-            }
-            else
-            {
-                throw new Exception("Число должно быть больше 0");
-            }
-        }
-    }
-
-    public Person()
-    {
-        throw new Exception("Нельзя пустым объявить");
-    }
-
-    //public person(string name, int age)
-    //{
-    //    this.name = name;
-    //    this.age = age;
-    //}
-
-}
-
-class Student : Person
-{
-    private int klass;
-    public int Klass
-    {
-        get { return klass; }
-        set
-        {
-            if (value >= 1 && value <= 11)
-            {
-                klass = value;
-            }
-            else throw new Exception("Класс должен быть от 1 до 11");
-        }
-    }
-
-    public Student(string name, int age) 
-        : base(name, age)
-    {
-        this.Name = name;
-        this.Age = age;
-    }
+    public Person(string name) => this.name = name;
 }
