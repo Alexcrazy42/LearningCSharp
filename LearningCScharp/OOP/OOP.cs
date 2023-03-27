@@ -1,38 +1,85 @@
 ﻿
-
-class Program2
+class Program
 {
     static void Main(string[] args)
     {
-        p.Person person = new p.Person("Alex", 12);
-        
+        Student student = new Student("Имя", 19);
+        student.Klass = 11;
+        Person person = student;
+        Console.Write(person.Name);
     }
 }
 
-namespace p
+class Person
 {
-    class Person
+    private string name;
+    public int age;
+
+    public string Name
     {
-        private string name = "";
-        private int age;
-
-        public Person(string name, int age)
+        get { return name; }
+        set
         {
-            this.name = name;
-            this.age = age;
+            if (value != null)
+            {
+                name = value;
+            }
+            else
+            {
+                throw new Exception();
+            }
         }
-
-
-        public string GetName() => name;
-        public int GetAge() => age;
-
-        public void SetName(string name) => this.name = name;
-
-        public void SetAge(int age) => this.age = age;
     }
+
+    public int Age
+    {
+        get { return age; }
+        set
+        {
+            if (value > 0)
+            {
+                age = value;
+            }
+            else
+            {
+                throw new Exception("Число должно быть больше 0");
+            }
+        }
+    }
+
+    public Person()
+    {
+        throw new Exception("Нельзя пустым объявить");
+    }
+
+    //public person(string name, int age)
+    //{
+    //    this.name = name;
+    //    this.age = age;
+    //}
+
 }
 
+class Student : Person
+{
+    private int klass;
+    public int Klass
+    {
+        get { return klass; }
+        set
+        {
+            if (value >= 1 && value <= 11)
+            {
+                klass = value;
+            }
+            else throw new Exception("Класс должен быть от 1 до 11");
+        }
+    }
 
-
-
- 
+    public Student(string name, int age) 
+        : base(name, age)
+    {
+        this.Name = name;
+        this.Age = age;
+    }
+}
