@@ -1,44 +1,27 @@
-﻿
-Person sender = new Person("Александр");
-Person receiver = new Person("Наталья");
-Message message = new Message("Привет, как дела?");
-Messenger<Message, Person> messenger = new Messenger<Message, Person>();
-messenger.SendMessage(sender, receiver, message);
+﻿using System.Net.Mail;
 
+MessageBuilder messageBuilder = WriteEmailMessage; // ковариантность
+Message message = messageBuilder("Hello");
+message.Print();    // Email: Hello
 
-class Messenger<M, P>
-    where M : Message 
-    where P : Person
-{ 
-    public void SendMessage(P sender, P receiver, M message)
-    {
-        Console.WriteLine($"{sender.Name} to {receiver.Name}: {message.Text}");
-    }
-}
+EmailMessage WriteEmailMessage(string text) => new EmailMessage(text);
 
-
+delegate Message MessageBuilder(string text);
 
 
 class Message
 {
-    private string text;
-    public string Text
-    {
-        get { return text; }
-        set { text = value; }
-    }
-
-    public Message(string text ) => this.text = text;
+    public string Text { get; }
+    public Message(string text) => Text = text;
+    public virtual void Print() => Console.WriteLine($"Message: {Text}");
 }
-
-class Person
+class EmailMessage : Message
 {
-    private string name;
-    public string Name
-    {
-        get { return name; }
-        set { name = value; }
-    }
-
-    public Person(string name) => this.name = name;
+    public EmailMessage(string text) : base(text) { }
+    public override void Print() => Console.WriteLine($"Email: {Text}");
+}
+class SmsMessage : Message
+{
+    public SmsMessage(string text) : base(text) { }
+    public override void Print() => Console.WriteLine($"Sms: {Text}");
 }
