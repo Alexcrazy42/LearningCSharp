@@ -1,27 +1,27 @@
-﻿using System.Net.Mail;
-
-MessageBuilder messageBuilder = WriteEmailMessage; // ковариантность
-Message message = messageBuilder("Hello");
-message.Print();    // Email: Hello
-
-EmailMessage WriteEmailMessage(string text) => new EmailMessage(text);
-
-delegate Message MessageBuilder(string text);
+﻿
 
 
-class Message
+interface IPerson
 {
-    public string Text { get; }
-    public Message(string text) => Text = text;
-    public virtual void Print() => Console.WriteLine($"Message: {Text}");
+    void Person();
 }
-class EmailMessage : Message
+
+interface IDriver : IPerson
 {
-    public EmailMessage(string text) : base(text) { }
-    public override void Print() => Console.WriteLine($"Email: {Text}");
+    void Drive();
 }
-class SmsMessage : Message
+
+
+class Driver : IDriver
 {
-    public SmsMessage(string text) : base(text) { }
-    public override void Print() => Console.WriteLine($"Sms: {Text}");
+    void Person()
+    {
+
+    }
+
+    void Drive()
+    {
+
+    }
 }
+
