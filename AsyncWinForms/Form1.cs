@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace AsyncWinForms
@@ -20,18 +15,34 @@ namespace AsyncWinForms
 
         async private void button1_Click(object sender, EventArgs e)
         {
-            int i = 0;
-            await Task.Run(async () =>
+            new Thread(() =>
             {
-                
-                while(i < 1000)
+                BeginInvoke((Action)(() =>
                 {
-                    await Task.Delay(100);
-                    i++;
-                    label1.Text = i.ToString();
+                    int i = 0;
+                    while (i < 1000)
+                    {
+                        Task.Delay(100);
+                        i++;
+                        label1.Text = i.ToString();
+                    }
                 }
-            }
-            );
+                ));
+            }).Start();
+            
+
+            //int i = 0;
+            //await Task.Run(async () =>
+            //{
+                
+            //    while(i < 1000)
+            //    {
+            //        await Task.Delay(100);
+            //        i++;
+            //        label1.Text = i.ToString();
+            //    }
+            //}
+            //);
         }
 
         private void button2_Click(object sender, EventArgs e)
