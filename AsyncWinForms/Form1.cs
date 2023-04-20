@@ -15,34 +15,21 @@ namespace AsyncWinForms
 
         async private void button1_Click(object sender, EventArgs e)
         {
-            new Thread(() =>
-            {
-                BeginInvoke((Action)(() =>
-                {
-                    int i = 0;
-                    while (i < 1000)
-                    {
-                        Task.Delay(100);
-                        i++;
-                        label1.Text = i.ToString();
-                    }
-                }
-                ));
-            }).Start();
-            
 
-            //int i = 0;
-            //await Task.Run(async () =>
-            //{
-                
-            //    while(i < 1000)
-            //    {
-            //        await Task.Delay(100);
-            //        i++;
-            //        label1.Text = i.ToString();
-            //    }
-            //}
-            //);
+
+
+            int i = 0;
+            await Task.Run(async () =>
+            {
+
+                while (i < 1000)
+                {
+                    await Task.Delay(100);
+                    i++;
+                    label1.Text = i.ToString();
+                }
+            }
+            );
         }
 
         private void button2_Click(object sender, EventArgs e)
