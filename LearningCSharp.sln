@@ -5,9 +5,13 @@ VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncWinForms", "AsyncWinForms\AsyncWinForms.csproj", "{21AF2AD0-8F82-4CD6-80B8-8823D125C237}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSharp", "CSharp", "{7BD4386E-AE3E-4434-B7CE-F45C4C52907B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSharpBasic", "CSharpBasic", "{7BD4386E-AE3E-4434-B7CE-F45C4C52907B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReferenceTypes", "ReferenceTypes\ReferenceTypes.csproj", "{622D38DA-3A5D-423F-8810-CB111F93D951}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReferenceTypes", "ReferenceTypes\ReferenceTypes.csproj", "{622D38DA-3A5D-423F-8810-CB111F93D951}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoxingUnboxing", "BoxingUnboxing\BoxingUnboxing.csproj", "{2C92C226-DE26-4B8C-AA53-2A6D93E3496C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefOut", "RefOut\RefOut.csproj", "{C652C55E-853A-49C2-9622-A6F2F6E4BCFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,12 +27,22 @@ Global
 		{622D38DA-3A5D-423F-8810-CB111F93D951}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{622D38DA-3A5D-423F-8810-CB111F93D951}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{622D38DA-3A5D-423F-8810-CB111F93D951}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C92C226-DE26-4B8C-AA53-2A6D93E3496C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C92C226-DE26-4B8C-AA53-2A6D93E3496C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C92C226-DE26-4B8C-AA53-2A6D93E3496C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C92C226-DE26-4B8C-AA53-2A6D93E3496C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C652C55E-853A-49C2-9622-A6F2F6E4BCFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C652C55E-853A-49C2-9622-A6F2F6E4BCFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C652C55E-853A-49C2-9622-A6F2F6E4BCFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C652C55E-853A-49C2-9622-A6F2F6E4BCFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{622D38DA-3A5D-423F-8810-CB111F93D951} = {7BD4386E-AE3E-4434-B7CE-F45C4C52907B}
+		{2C92C226-DE26-4B8C-AA53-2A6D93E3496C} = {7BD4386E-AE3E-4434-B7CE-F45C4C52907B}
+		{C652C55E-853A-49C2-9622-A6F2F6E4BCFB} = {7BD4386E-AE3E-4434-B7CE-F45C4C52907B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FAC3CB8F-711B-4EC8-8FE2-2EB32869022B}
