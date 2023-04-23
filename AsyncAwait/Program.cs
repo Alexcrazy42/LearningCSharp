@@ -6,38 +6,59 @@ list.Add(Print3());
 
 foreach (Task t in list)
 {
-    t.ContinueWith(t => { });
+    t.GetAwaiter().GetResult();
     t.Wait();
-}
+};
 
 
 async Task Print1()
 {
-    Console.WriteLine("start1");
-    await Task.Run(() =>
+    Console.WriteLine($"start1 in [{Thread.CurrentThread.ManagedThreadId}]");
+    await Task.Run(async () =>
     {
-        Thread.Sleep(2000); // imitation of long work (with DB e.g.)
-        Console.WriteLine("in1 complete");
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write("#");
+            await Task.Delay(100);
+        }
+        Console.WriteLine();
+        
     });
+
+    
+    Console.WriteLine($"end1 complete in [{Thread.CurrentThread.ManagedThreadId}]");
+
 }
 
 async Task Print2()
 {
-    Console.WriteLine("start2");
+    Console.WriteLine($"start2 in [{Thread.CurrentThread.ManagedThreadId}]");
     await Task.Run(() =>
     {
-        Thread.Sleep(6000); // imitation of long work (with DB e.g.)
-        Console.WriteLine("in2 complete");
+        for (int i = 0; i < 50; i++)
+        {
+            Console.Write("*");
+            Thread.Sleep(100);
+        }
+        Console.WriteLine();
+
     });
+    Console.WriteLine($"in2 complete in [{Thread.CurrentThread.ManagedThreadId}]");
 }
 
 
 async Task Print3()
 {
-    Console.WriteLine("start3");
+    Console.WriteLine($"start3 in [{Thread.CurrentThread.ManagedThreadId}]");
     await Task.Run(() =>
     {
-        Thread.Sleep(3000); // imitation of long work (with DB e.g.)
-        Console.WriteLine("in3 complete");
+        for (int i = 0; i < 40; i++)
+        {
+            Console.Write("@");
+            Thread.Sleep(100);
+        }
+        Console.WriteLine();
+
     });
+    Console.WriteLine($"in3 complete in [{Thread.CurrentThread.ManagedThreadId}]");
 }

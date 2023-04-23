@@ -10,13 +10,16 @@ namespace AsyncWinForms
         public Form1()
         {
             InitializeComponent();
-            label2.Text = "1";
         }
 
         async private void button1_Click(object sender, EventArgs e)
         {
 
-
+            await Task.Run(() =>
+            {
+                MessageBox.Show($"задача началась в потоке {Thread.CurrentThread.ManagedThreadId}");
+            }
+            );
 
             int i = 0;
             await Task.Run(async () =>
@@ -30,11 +33,18 @@ namespace AsyncWinForms
                 }
             }
             );
+            MessageBox.Show($"задача завершилась в потоке {Thread.CurrentThread.ManagedThreadId}");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            label2.Text = (Int32.Parse(label2.Text) + 1).ToString();
+            int i = 0;
+            while (i < 150)
+            {
+                Thread.Sleep(100);
+                i++;
+                label2.Text = i.ToString();
+            }
         }
     }
 }
