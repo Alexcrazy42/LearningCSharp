@@ -1,64 +1,32 @@
-﻿List<Task> list = new List<Task>();
-list.Add(Print1());
-list.Add(Print2());
-list.Add(Print3());
+﻿int[] a = new int[5];
 
 
-foreach (Task t in list)
+async Task A(int index, int pause)
 {
-    t.GetAwaiter().GetResult();
-    t.Wait();
-};
-
-
-async Task Print1()
-{
-    Console.WriteLine($"start1 in [{Thread.CurrentThread.ManagedThreadId}]");
-    await Task.Run(async () =>
-    {
-        for (int i = 0; i < 10; i++)
-        {
-            Console.Write("#");
-            await Task.Delay(100);
-        }
-        Console.WriteLine();
-        
-    });
-
-    
-    Console.WriteLine($"end1 complete in [{Thread.CurrentThread.ManagedThreadId}]");
-
-}
-
-async Task Print2()
-{
-    Console.WriteLine($"start2 in [{Thread.CurrentThread.ManagedThreadId}]");
+    Console.WriteLine($"start A in [{Thread.CurrentThread.ManagedThreadId}]");
     await Task.Run(() =>
     {
-        for (int i = 0; i < 50; i++)
-        {
-            Console.Write("*");
-            Thread.Sleep(100);
-        }
-        Console.WriteLine();
-
+        Thread.Sleep(pause);
+        Console.WriteLine($"inner A in thread [{Thread.CurrentThread.ManagedThreadId}]");
+        a[index] = new Random().Next() % 100;
     });
-    Console.WriteLine($"in2 complete in [{Thread.CurrentThread.ManagedThreadId}]");
+
+    Console.WriteLine($"end A complete in [{Thread.CurrentThread.ManagedThreadId}]");
 }
 
 
-async Task Print3()
-{
-    Console.WriteLine($"start3 in [{Thread.CurrentThread.ManagedThreadId}]");
-    await Task.Run(() =>
-    {
-        for (int i = 0; i < 40; i++)
-        {
-            Console.Write("@");
-            Thread.Sleep(100);
-        }
-        Console.WriteLine();
+List<Task> tasks = new List<Task>();
+tasks.Add(A(0, 300));
+tasks.Add(A(1, 400));
+tasks.Add(A(3, 100));
 
-    });
-    Console.WriteLine($"in3 complete in [{Thread.CurrentThread.ManagedThreadId}]");
+foreach(var task in tasks)
+{
+    task.GetAwaiter().GetResult();
+    task.Wait();
+}
+
+foreach(int i in a)
+{
+    Console.Write(i.ToString() + " ");
 }
