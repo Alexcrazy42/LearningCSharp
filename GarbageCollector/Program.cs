@@ -5,21 +5,11 @@ class Program
 {
     static void Main(string[] args)
     {
-        Test();
+        Person? tim = new Person(12);
+        tim.Dispose();
+        Console.WriteLine(tim.age);
     }
 
-    static public void Test()
-    {
-        Person? tom = null;
-        try
-        {
-            tom = new Person(19);
-        }
-        finally
-        {
-            tom?.Dispose();
-        }
-    }
 }
 
 
@@ -28,6 +18,7 @@ class Person : IDisposable
 {
 
     public int age;
+    private bool disposed = false;
 
     public Person(int age)
     {
@@ -38,8 +29,32 @@ class Person : IDisposable
 
     public void Dispose()
     {
-        Console.WriteLine("Dispose person");
+        Dispose(true);
+        GC.SuppressFinalize(this);
     }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if(disposed == true)
+        {
+            return;
+        }
+        if(disposing == true)
+        {
+
+        }
+
+        disposed = true;
+
+        
+
+    }
+
+    ~Person()
+    {
+        Dispose(false);
+    }
+
 
     
 

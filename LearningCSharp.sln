@@ -19,7 +19,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncAwait", "AsyncAwait\As
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GarbageCollector", "GarbageCollector\GarbageCollector.csproj", "{36DC52BF-E3C4-4C91-8F2D-B44623FB7CFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delegate", "Delegate\Delegate.csproj", "{A6990C8D-A920-49AC-B24E-975C83ECEEBA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Delegate", "Delegate\Delegate.csproj", "{A6990C8D-A920-49AC-B24E-975C83ECEEBA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "multithreading-async-parallel-concurrency", "multithreading-async-parallel-concurrency", "{03982DD1-FC24-417E-B5CA-59DF5E2CDF37}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "thread-tasks", "multithreading-async-parallel-concurrency\parallel-race\thread-tasks.csproj", "{96628CD0-70F3-4003-85B0-5316FB39F0B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yield", "Yield\Yield.csproj", "{E3EDB5C9-52F3-4401-B4F7-293F978E8786}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +65,14 @@ Global
 		{A6990C8D-A920-49AC-B24E-975C83ECEEBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6990C8D-A920-49AC-B24E-975C83ECEEBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6990C8D-A920-49AC-B24E-975C83ECEEBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96628CD0-70F3-4003-85B0-5316FB39F0B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96628CD0-70F3-4003-85B0-5316FB39F0B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96628CD0-70F3-4003-85B0-5316FB39F0B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96628CD0-70F3-4003-85B0-5316FB39F0B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3EDB5C9-52F3-4401-B4F7-293F978E8786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3EDB5C9-52F3-4401-B4F7-293F978E8786}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3EDB5C9-52F3-4401-B4F7-293F978E8786}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3EDB5C9-52F3-4401-B4F7-293F978E8786}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,6 +85,9 @@ Global
 		{6EEA127F-5285-4D9B-AECB-92FCF046245D} = {7BD4386E-AE3E-4434-B7CE-F45C4C52907B}
 		{36DC52BF-E3C4-4C91-8F2D-B44623FB7CFE} = {7BD4386E-AE3E-4434-B7CE-F45C4C52907B}
 		{A6990C8D-A920-49AC-B24E-975C83ECEEBA} = {7BD4386E-AE3E-4434-B7CE-F45C4C52907B}
+		{03982DD1-FC24-417E-B5CA-59DF5E2CDF37} = {7BD4386E-AE3E-4434-B7CE-F45C4C52907B}
+		{96628CD0-70F3-4003-85B0-5316FB39F0B7} = {03982DD1-FC24-417E-B5CA-59DF5E2CDF37}
+		{E3EDB5C9-52F3-4401-B4F7-293F978E8786} = {7BD4386E-AE3E-4434-B7CE-F45C4C52907B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FAC3CB8F-711B-4EC8-8FE2-2EB32869022B}
